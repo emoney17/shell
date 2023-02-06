@@ -8,4 +8,4 @@ gcc shell.c -o shell
 ./shell
 ```
 The shell prompt will look something like *username@hostname>*
-*[guide](https://brennan.io/2015/01/16/write-a-shell-in-c/)
+* [guide](https://brennan.io/2015/01/16/write-a-shell-in-c/)
