@@ -1,4 +1,4 @@
-## basic shell in c
+## basic shell
 ### how to run
 clone the repository and run the gcc command, then run the shell executable and you will then be in the new shell program
 ```
