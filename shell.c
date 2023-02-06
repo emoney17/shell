@@ -8,6 +8,8 @@
 #define SH_RL_BUFSIZE 1024
 #define SH_TOK_BUFSIZE 64
 #define SH_TOK_DELIM " \t\r\n\a"
+#define HOST_NAME_MAX 255
+#define LOGIN_NAME_MAX 255
 
 // start with a block size. If they exceed it reallocate with more space
 // char* sh_read_line(void)
@@ -244,10 +246,17 @@ void sh_loop(void)
     char* line;
     char** args;
     int status;
+    char hostname[HOST_NAME_MAX];
+    char username[LOGIN_NAME_MAX];
+
+    // get the host and username from computer
+    gethostname(hostname, HOST_NAME_MAX);
+    getlogin_r(username, LOGIN_NAME_MAX);
 
     do
     {
-        printf("> ");
+
+        printf("%s@%s> ", username, hostname);
         line = sh_read_line();
         args = sh_split_line(line);
         status = sh_execute(args);
