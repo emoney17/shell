@@ -11,54 +11,6 @@
 #define HOST_NAME_MAX 255
 #define LOGIN_NAME_MAX 255
 
-// start with a block size. If they exceed it reallocate with more space
-// char* sh_read_line(void)
-// {
-//     int bufsize = SH_RL_BUFSIZE;
-//     int position = 0;
-//     char* buffer = malloc(sizeof(char) * bufsize); // 'string'
-//     int c; // store char as an int
-//            // EOF is an int so to check you need int
-//
-//     if (!buffer)
-//     {
-//         fprintf(stderr, "sh: allocation error\n");
-//         exit(EXIT_FAILURE);
-//     }
-//
-//     while (1)
-//     {
-//         // read a character
-//         c = getchar();
-//
-//         // check if EOF
-//         // if we hit EOF replace it will a null character and return
-//         if (c == EOF || c == '\n')
-//         {
-//             buffer[position] = '\0';
-//             return buffer;
-//         }
-//         else
-//         {
-//             buffer[position] = c;
-//         }
-//         position++;
-//
-//         // check if exceeded buffer
-//         // if we have exceeded the buffer, reallocate
-//         if (position >= bufsize)
-//         {
-//             bufsize += SH_RL_BUFSIZE;
-//             buffer = realloc(buffer, bufsize);
-//             if (!buffer)
-//             {
-//                 fprintf(stderr, "sh: allocation error\n");
-//                 exit(EXIT_FAILURE);
-//             }
-//         }
-//     }
-// }
-
 // getline version of readline
 char* sh_read_line(void)
 {
@@ -210,7 +162,7 @@ int sh_help(char** args)
         printf("    %s\n", builtin_str[i]);
     }
 
-    printf("Use the man command for informationon other programs\n");
+    printf("Use the man command for information on other programs\n");
     return 1;
 }
 
@@ -275,8 +227,6 @@ int main(int argc, char *argv[])
     // parse
     // execute
     sh_loop();
-
-    // perform shutdown/cleanup
 
     return EXIT_SUCCESS;
 }
